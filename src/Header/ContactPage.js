@@ -54,7 +54,7 @@ const ContactPage = () => {
     console.log("going to backend");
     try {
       console.log("API Base URL:", API_BASE_URL); // helps you debug
-      const response = await fetch(`http://portfolio-3-2ni7.onrender.com/contact/transport`, {
+      const response = await fetch(`https://portfolio-3-2ni7.onrender.com/contact/transport`, {
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify(formData),
