@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { LineChart, Line, PieChart, Pie } from 'recharts';
-import {  ArrowRightEndOnRectangle } from '@heroicons/react/24/outline';
 import { BellIcon, ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline';
 
 
