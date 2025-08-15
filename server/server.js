@@ -6,8 +6,9 @@ const app = express();
 
 // ✅ Allow both localhost (dev) and your Vercel site (prod)
 const allowedOrigins = [
-  "http://localhost:3000",                 // local dev
-  "https://portfolio-valq.vercel.app"      // your deployed frontend
+  "http://localhost:3000",                  // local dev
+  "https://portfolio-valq.vercel.app",       // Vercel frontend
+  "https://hp0901.netlify.app"               // Netlify frontend
 ];
 
 app.use(cors({
