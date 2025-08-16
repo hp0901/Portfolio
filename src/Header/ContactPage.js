@@ -18,26 +18,34 @@ const ContactPage = () => {
   const [submitStatus, setSubmitStatus] = useState("");
   const [isSending, setIsSending] = useState(false); // This is correctly defined
 
-  const validate = () => {
-    const newErrors = {};
-    if (!formData.fullName.trim()) newErrors.fullName = "Full name is required";
+const validate = () => {
+  const newErrors = {};
 
-    if (!formData.phone || !/^\+?[0-9\s-]{10,15}$/.test(formData.phone))
-      newErrors.phone = "Valid phone number is required";
+  if (!formData.fullName.trim()) newErrors.fullName = "Full name is required";
 
-    if (formData.alternatePhone && !/^\+?[0-9\s-]{10,15}$/.test(formData.alternatePhone))
-      newErrors.alternatePhone = "Alternate phone must be valid";
+  if (!formData.phone || !/^\+?[0-9\s-]{10,15}$/.test(formData.phone))
+    newErrors.phone = "Valid phone number is required";
 
-    if (!formData.subject.trim()) newErrors.subject = "Subject is required";
+  if (!formData.alternatePhone || !/^\+?[0-9\s-]{10,15}$/.test(formData.alternatePhone))
+    newErrors.alternatePhone = "Alternate phone is required and must be valid";
 
-    if (
-      !formData.recipientEmail.trim() ||
-      !/^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/.test(formData.recipientEmail)
-    )
-      newErrors.recipientEmail = "Valid recipient email is required";
+  if (!formData.subject.trim()) newErrors.subject = "Subject is required";
 
-    return newErrors;
-  };
+  if (
+    !formData.recipientEmail.trim() ||
+    !/^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/.test(formData.recipientEmail)
+  )
+    newErrors.recipientEmail = "Valid recipient email is required";
+
+  if (!formData.dob) newErrors.dob = "Date of birth is required";
+
+  if (!formData.gender) newErrors.gender = "Gender is required";
+
+  if (!formData.message.trim()) newErrors.message = "Message is required";
+
+  return newErrors;
+};
+
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -59,8 +67,7 @@ const ContactPage = () => {
     setSubmitStatus(""); // Clear previous status
     // --- FIX END ---
     
-    try {
-      console.log("API Base URL:", API_BASE_URL); 
+    try { 
       const response = await fetch(`https://portfolio-3-2ni7.onrender.com/contact/sendEmail`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -111,6 +118,7 @@ const ContactPage = () => {
             name="fullName"
             value={formData.fullName}
             onChange={handleChange}
+            required
             className={`w-full px-4 py-3 sm:px-6 rounded-xl bg-gray-800 text-white border-2 ${errors.fullName ? "border-red-500" : "border-pink-500/20"} focus:ring-2 focus:ring-pink-500 outline-none text-sm sm:text-base`}
             placeholder="Your full name"
           />
@@ -124,6 +132,7 @@ const ContactPage = () => {
             type="tel"
             name="phone"
             value={formData.phone}
+            required
             onChange={handleChange}
             placeholder="+91xxxxxxxxxx"
             className={`w-full px-4 py-3 sm:px-6 rounded-xl bg-gray-800 text-white border-2 ${errors.phone ? "border-red-500" : "border-pink-500/20"} focus:ring-2 focus:ring-pink-500 outline-none text-sm sm:text-base`}
@@ -139,6 +148,7 @@ const ContactPage = () => {
             name="alternatePhone"
             value={formData.alternatePhone}
             onChange={handleChange}
+            required
             placeholder="+91xxxxxxxxxx"
             className={`w-full px-4 py-3 sm:px-6 rounded-xl bg-gray-800 text-white border-2 ${errors.alternatePhone ? "border-red-500" : "border-pink-500/20"} focus:ring-2 focus:ring-pink-500 outline-none text-sm sm:text-base`}
           />
@@ -154,6 +164,7 @@ const ContactPage = () => {
               name="dob"
               id="dob"
               value={formData.dob}
+              required
               onChange={handleChange}
               className="w-full pr-12 px-4 py-3 sm:px-6 rounded-xl bg-gray-800 text-white border-2 border-pink-500/20 focus:ring-2 focus:ring-pink-500 outline-none appearance-none text-sm sm:text-base"
             />
@@ -164,6 +175,7 @@ const ContactPage = () => {
             >
               📅
             </button>
+            {errors.dob && <p className="text-red-400 text-xs mt-1">{errors.dob}</p>}
           </div>
         </div>
 
@@ -173,6 +185,7 @@ const ContactPage = () => {
           <select
             name="gender"
             value={formData.gender}
+            required
             onChange={handleChange}
             className="w-full px-4 py-3 sm:px-6 rounded-xl bg-gray-800 text-white border-2 border-pink-500/20 focus:ring-2 focus:ring-pink-500 outline-none text-sm sm:text-base"
           >
@@ -182,6 +195,7 @@ const ContactPage = () => {
             <option value="Other">Other</option>
             <option value="Prefer not to say">Prefer not to say</option>
           </select>
+          {errors.gender && <p className="text-red-400 text-xs mt-1">{errors.gender}</p>}
         </div>
 
         {/* Subject */}
@@ -191,6 +205,7 @@ const ContactPage = () => {
             type="text"
             name="subject"
             value={formData.subject}
+            required
             onChange={handleChange}
             placeholder="Email subject"
             className={`w-full px-4 py-3 sm:px-6 rounded-xl bg-gray-800 text-white border-2 ${errors.subject ? "border-red-500" : "border-pink-500/20"} focus:ring-2 focus:ring-pink-500 outline-none text-sm sm:text-base`}
@@ -205,6 +220,7 @@ const ContactPage = () => {
             type="email"
             name="recipientEmail"
             value={formData.recipientEmail}
+            required
             onChange={handleChange}
             placeholder="recipient@example.com"
             className={`w-full px-4 py-3 sm:px-6 rounded-xl bg-gray-800 text-white border-2 ${errors.recipientEmail ? "border-red-500" : "border-pink-500/20"} focus:ring-2 focus:ring-pink-500 outline-none text-sm sm:text-base`}
@@ -218,11 +234,13 @@ const ContactPage = () => {
           <textarea
             name="message"
             value={formData.message}
+            required
             onChange={handleChange}
             placeholder="Your message..."
             rows="4"
             className="w-full px-4 py-3 sm:px-6 rounded-xl bg-gray-800 text-white border-2 border-pink-500/20 focus:ring-2 focus:ring-pink-500 outline-none text-sm sm:text-base"
           ></textarea>
+          {errors.message && <p className="text-red-400 text-xs mt-1">{errors.message}</p>}
         </div>
 
         {/* Submit Button */}
