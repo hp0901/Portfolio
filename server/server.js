@@ -6,6 +6,8 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const contactRoutes = require("./contact"); // Adjust path if needed
 
+console.log("📨 Initializing contact routes...");
+
 const app = express();
 
 // ✅ Allow both localhost (dev) and deployed frontends (prod)

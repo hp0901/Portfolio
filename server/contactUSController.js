@@ -2,6 +2,7 @@ const Contact = require("./schema/emailsent"); // Mongoose model
 const mailSender = require("./transporter"); // Nodemailer setup
 const { contactUsEmail } = require('./contactUsEmail') // Email template
 
+console.log("📨 Initializing contactUSController...");
 // POST: Save contact and send email
 exports.contactUsController = async (req, res) => {
   const {
@@ -14,6 +15,7 @@ exports.contactUsController = async (req, res) => {
     gender,
     message,
   } = req.body;
+  console.log(req.body);
 
   console.log("📬 Received contact form data:");
   console.log("Goinig to save contact and send email...");
