@@ -15,6 +15,8 @@ exports.contactUsController = async (req, res) => {
     message,
   } = req.body;
 
+  console.log("📬 Received contact form data:");
+  console.log("Goinig to save contact and send email...");
   try {
     // Save to MongoDB
     const newContact = await Contact.create({
