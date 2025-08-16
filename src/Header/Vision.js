@@ -35,7 +35,7 @@ const Vision = () => {
         {/* 1. Intro */}
         <motion.section
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
           variants={fadeUp}
           transition={{ duration: 1 }}
           className="text-center space-y-6"
@@ -168,8 +168,8 @@ const Vision = () => {
               { year: "2023", event: "Built full-stack apps and improved DSA." },
               { year: "2024", event: "Targeting internships & roles in the USA." },
             ].map(({ year, event }) => (
-              <div key={year} className="relative pl-8">
-                <div className="absolute -left-5 top-1 w-14 h-14 rounded-full bg-yellow-400 text-black font-bold flex items-center justify-center">
+              <div key={year} className="relative pl-10 ">
+                <div className="absolute -left-7 top-(-1) w-14 h-14 rounded-full bg-yellow-400 text-black font-bold flex items-center justify-center">
                   {year}
                 </div>
                 <p className="text-lg text-blue-200/90">{event}</p>

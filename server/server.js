@@ -6,7 +6,7 @@ const app = express();
 
 // ✅ Allow both localhost (dev) and your Vercel site (prod)
 const allowedOrigins = [
-  "http://localhost:3000",                  // local dev
+  "http://localhost:3001",                  // local dev
   "https://portfolio-valq.vercel.app",       // Vercel frontend
   "https://hp0901.netlify.app"               // Netlify frontend
 ];
@@ -32,7 +32,7 @@ app.use("/contact", contactRoutes);
 
 app.get("/", (req, res) => res.send("✅ Server running"));
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`🌐 Server: http://localhost:${PORT}`);
 });
