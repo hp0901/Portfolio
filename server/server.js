@@ -10,7 +10,7 @@ const app = express();
 
 // ✅ Allow both localhost (dev) and deployed frontends (prod)
 const allowedOrigins = [
-  "http://localhost:3001",                    // Local dev
+  "http://localhost:3000",                    // Local dev
   "https://portfolio-valq.vercel.app",        // Vercel frontend
   "https://hp0901.netlify.app",               // Netlify frontend
   "https://hpportfolio0901.netlify.app/"      // Additional frontend
