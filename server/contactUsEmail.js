@@ -78,8 +78,11 @@ exports.contactUsEmail = (
     <tr>
       <td class="header">
         <!-- CORRECTED: Use the public URL for the image -->
-        <a href="https://studynotion-edtech-project.vercel.app">
-          <img class="logo" src="https://i.postimg.cc/D0LhYBrt/harsh-linkedin-bg.jpg" alt="Harsh Patel Portfolio">
+        <a href="https://hp0901.netlify.app">
+          <img
+            src="https://i.postimg.cc/D0LhYBrt/harsh-linkedin-bg.jpg"
+            alt="Harsh Patel Portfolio"
+            style="width: 200%; max-width: 400px; height: auto;"/>
         </a>
       </td>
     </tr>
@@ -122,7 +125,7 @@ exports.contactUsEmail = (
             <td>${userMessage}</td>
           </tr>
         </table>
-        <a class="cta" href="https://studynotion-edtech-project.vercel.app">Visit My Website</a>
+        <a class="cta" href="https://hp0901.netlify.app">Visit My Website</a>
       </td>
     </tr>
     <tr>

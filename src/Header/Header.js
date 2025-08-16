@@ -22,6 +22,7 @@ import { MdCancel } from "react-icons/md";
 import Dashboard from "./Dashboard";
 import MyProfile from "./MyProfile ";
 import LogoutPage from "./LogoutPage";
+import ContactEntries from "./ContactEntries";
 export const profileMenuItems = [
   { label: "Home", icon: <FaHome />, path: "/", element: null },
   { label: "Dashboard", icon: <FaChartBar />, path: "/dashboard", element: <Dashboard/> }, // Common dashboard link
@@ -31,6 +32,7 @@ export const profileMenuItems = [
   { label: "About Us", icon: <FaInfoCircle />, path: "/about", element: <AboutPage /> },
   { label: "Contact Us", icon: <FaAddressBook />, path: "/contact", element: <ContactPage /> },
   { label: "Logout", icon: <FaSignOutAlt />, path: "/logout", element: <LogoutPage/> }, // Logout option
+  { label: "View Entries", icon: <FaChartBar />, path: "/contact/entries", element: <ContactEntries /> },
 ];
 
 export default function Header() {

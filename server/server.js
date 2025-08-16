@@ -1,20 +1,33 @@
+// Load environment variables from .env file
+require("dotenv").config();
+
 const express = require("express");
 const cors = require("cors");
-const contactRoutes = require("./contact");
+const mongoose = require("mongoose");
+const contactRoutes = require("./contact"); // Adjust path if needed
 
 const app = express();
 
-// ✅ Allow both localhost (dev) and your Vercel site (prod)
+// ✅ Allow both localhost (dev) and deployed frontends (prod)
 const allowedOrigins = [
-  "http://localhost:3001",                  // local dev
-  "https://portfolio-valq.vercel.app",       // Vercel frontend
-  "https://hp0901.netlify.app"               // Netlify frontend
+  "http://localhost:3001",                    // Local dev
+  "https://portfolio-valq.vercel.app",        // Vercel frontend
+  "https://hp0901.netlify.app",               // Netlify frontend
+  "https://hpportfolio0901.netlify.app/"      // Additional frontend
 ];
 
+// 🌐 MongoDB Connection
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log("✅ MongoDB connected successfully."))
+.catch((err) => console.error("❌ MongoDB connection error:", err));
+
+// 🔐 CORS Configuration
 app.use(cors({
   origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl)
-    if (!origin) return callback(null, true);
+    if (!origin) return callback(null, true); // Allow mobile apps or curl
     if (allowedOrigins.includes(origin)) {
       return callback(null, true);
     } else {
@@ -25,14 +38,18 @@ app.use(cors({
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
+// 🧠 Middleware
 app.use(express.json());
 
-console.log("going to use contact routes");
+// 📬 Routes
+console.log("📨 Mounting contact routes...");
 app.use("/contact", contactRoutes);
 
+// 🏁 Health Check
 app.get("/", (req, res) => res.send("✅ Server running"));
 
+// 🚀 Start Server
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
-  console.log(`🌐 Server: http://localhost:${PORT}`);
+  console.log(`🌐 Server listening at: http://localhost:${PORT}`);
 });
