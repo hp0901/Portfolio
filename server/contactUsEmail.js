@@ -1,96 +1,137 @@
 exports.contactUsEmail = (
-    fullName, phone, alternatePhone, subject, recipientEmail, dob, gender, message
-  ) => {
-    return `<!DOCTYPE html>
-    <html>
-    
-    <head>
-        <meta charset="UTF-8">
-        <title>Contact Form Confirmation</title>
-        <style>
-            body {
-                background-color: #ffffff;
-                font-family: Arial, sans-serif;
-                font-size: 16px;
-                line-height: 1.4;
-                color: #333333;
-                margin: 0;
-                padding: 0;
-            }
-    
-    
-            .container {
-                max-width: 600px;
-                margin: 0 auto;
-                padding: 20px;
-                text-align: center;
-            }
-    
-            .logo {
-                max-width: 200px;
-                margin-bottom: 20px;
-            }
-    
-            .message {
-                font-size: 18px;
-                font-weight: bold;
-                margin-bottom: 20px;
-            }
-    
-            .body {
-                font-size: 16px;
-                margin-bottom: 20px;
-            }
-    
-            .cta {
-                display: inline-block;
-                padding: 10px 20px;
-                background-color: #FFD60A;
-                color: #000000;
-                text-decoration: none;
-                border-radius: 5px;
-                font-size: 16px;
-                font-weight: bold;
-                margin-top: 20px;
-            }
-    
-            .support {
-                font-size: 14px;
-                color: #999999;
-                margin-top: 20px;
-            }
-    
-            .highlight {
-                font-weight: bold;
-            }
-        </style>
-    
-    </head>
-    
-    <body>
-        <div class="container">
-            <a href="https://studynotion-edtech-project.vercel.app"><img class="logo"
-                    src="https://i.ibb.co/7Xyj3PC/logo.png" alt="StudyNotion Logo"></a>
-            <div class="message">Contact Form Confirmation</div>
-            <div class="body">
-                <p>Dear ${fullName} ,</p>
-                <p>Thank you for contacting us. We have received your message and will respond to you as soon as possible.
-                </p>
-                <p>Here are the details you provided:</p>
-                <p>Name: ${fullName} }</p>
-                <p>Email: ${recipientEmail}</p>
-                <p>Phone Number: ${phone}</p>
-                <p>Message: ${message}</p>
-                <p>Alternate Phone: ${alternatePhone}</p>
-                <p>Subject: ${subject}</p>
-                <p>Date of Birth: ${dob}</p>
-                <p>Gender:${gender}</p>
-                <p>We appreciate your interest and will get back to you shortly. </p>
-            </div>
-            <div class="support">If you have any further questions or need immediate assistance, please feel free to reach
-                out to us at <a href="mailto:info@studynotion.com">info@studynotion.com</a>. We are here to help!</div>
-        </div>
-    </body>
-    
-    </html>`
-  }
+  fullName, phone, alternatePhone, subject, recipientEmail, dob, gender, message
+) => {
+
+  // Set default values for optional fields
+  const altPhone = alternatePhone || "N/A";
+  const userGender = gender || "Prefer not to say";
+  const userDob = dob || "dd-mm-yyyy";
+  const userMessage = message || "No message provided.";
+
+  return `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Form Confirmation</title>
+  <style>
+    body {
+      background-color: #f0f4f8;
+      font-family: Arial, sans-serif;
+      color: #333333;
+      margin: 0;
+      padding: 0;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .header {
+      text-align: center;
+      padding-bottom: 20px;
+    }
+    .logo {
+      max-width: 200px;
+      height: auto;
+      border-radius: 8px;
+    }
+    .content {
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .content td {
+      padding: 8px 0;
+    }
+    .content th {
+      text-align: left;
+      padding: 8px 0;
+      color: #555555;
+    }
+    .cta {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: #3182CE;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      margin-top: 20px;
+      text-align: center;
+    }
+    .footer {
+      font-size: 14px;
+      color: #999999;
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <table class="container">
+    <tr>
+      <td class="header">
+        <!-- CORRECTED: Use the public URL for the image -->
+        <a href="https://studynotion-edtech-project.vercel.app">
+          <img class="logo" src="https://i.postimg.cc/D0LhYBrt/harsh-linkedin-bg.jpg" alt="Harsh Patel Portfolio">
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td class="content">
+        <p>Dear ${fullName},</p>
+        <p>${userMessage}</p>
+        <p>Here are the details you provided:</p>
+        <table>
+          <tr>
+            <th>Name:</th>
+            <td>${fullName}</td>
+          </tr>
+          <tr>
+            <th>Email:</th>
+            <td>${recipientEmail}</td>
+          </tr>
+          <tr>
+            <th>Phone Number:</th>
+            <td>${phone}</td>
+          </tr>
+          <tr>
+            <th>Alternate Phone:</th>
+            <td>${altPhone}</td>
+          </tr>
+          <tr>
+            <th>Subject:</th>
+            <td>${subject}</td>
+          </tr>
+          <tr>
+            <th>Date of Birth:</th>
+            <td>${userDob}</td>
+          </tr>
+          <tr>
+            <th>Gender:</th>
+            <td>${userGender}</td>
+          </tr>
+          <tr>
+            <th>Message:</th>
+            <td>${userMessage}</td>
+          </tr>
+        </table>
+        <a class="cta" href="https://studynotion-edtech-project.vercel.app">Visit My Website</a>
+      </td>
+    </tr>
+    <tr>
+      <td class="footer">
+        If you have any further questions or need immediate assistance, please reach out to me at 
+        <a href="mailto:${recipientEmail}">harsh.patel@example.com</a>.
+      </td>
+    </tr>
+  </table>
+</body>
+</html>`;
+};
