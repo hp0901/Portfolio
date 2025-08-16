@@ -19,7 +19,7 @@ const allowedOrigins = [
 ];
 
 // 🌐 MongoDB Connection
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/portfolio", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
@@ -42,6 +42,20 @@ app.use(cors({
 
 // 🧠 Middleware
 app.use(express.json());
+
+const jwt = require("jsonwebtoken");
+
+app.post("/login", (req, res) => {
+  const { username, password } = req.body;
+
+  if (username === process.env.ADMIN_USER && password === process.env.ADMIN_PASS) {
+    const token = jwt.sign({ user: username }, process.env.JWT_SECRET, { expiresIn: "15m" });
+    res.json({ token });
+  } else {
+    res.status(401).json({ error: "Invalid credentials" });
+  }
+});
+
 
 // 📬 Routes
 console.log("📨 Mounting contact routes...");

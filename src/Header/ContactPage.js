@@ -69,6 +69,7 @@ const validate = () => {
     
     try { 
       const response = await fetch(`https://portfolio-3-2ni7.onrender.com/contact/sendEmail`, {
+      // const response = await fetch(`http://localhost:3001/contact/sendEmail`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
