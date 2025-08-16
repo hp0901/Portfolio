@@ -61,7 +61,7 @@ const ContactPage = () => {
     
     try {
       console.log("API Base URL:", API_BASE_URL); 
-      const response = await fetch(`https://portfolio-3-2ni7.onrender.com/contact/contactUsEmail`, {
+      const response = await fetch(`https://portfolio-3-2ni7.onrender.com/contact/sendEmail`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
