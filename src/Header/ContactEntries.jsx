@@ -5,20 +5,23 @@ const ContactEntries = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://portfolio-3-2ni7.onrender.com/contact/entries")
-    fetch("http://localhost:3001/contact/entries")
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success) {
-          setContacts(data.data);
-        }
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Error fetching contacts:", err);
-        setLoading(false);
-      });
-  }, []);
+  const apiUrl = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
+
+  fetch(`${apiUrl}/contact/entries`)
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.success) {
+        setContacts(data.data);
+      }
+      setLoading(false);
+    })
+    .catch((err) => {
+      console.error("Error fetching contacts:", err);
+      setLoading(false);
+    });
+}, []);
+
+
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-12 text-white">
