@@ -19,7 +19,7 @@ const allowedOrigins = [
 ];
 
 // 🌐 MongoDB Connection
-mongoose.connect("mongodb+srv://harsh_patel_0:82esEaQRHbT7@N8@cluster0.2egugdo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", {
+mongoose.connect("mongodb+srv://harsh_patel_0:82esEaQRHbT7%40N8@cluster0.2egugdo.mongodb.net/", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
