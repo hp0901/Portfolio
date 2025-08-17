@@ -31,8 +31,8 @@ export const profileMenuItems = [
   { label: "Settings", icon: <FaCogs />, path: "/settings", element: <SettingsPage /> },
   { label: "About Us", icon: <FaInfoCircle />, path: "/about", element: <AboutPage /> },
   { label: "Contact Us", icon: <FaAddressBook />, path: "/contact", element: <ContactPage /> },
-  { label: "Logout", icon: <FaSignOutAlt />, path: "/logout", element: <LogoutPage/> }, // Logout option
   { label: "View Entries", icon: <FaChartBar />, path: "/contact/entries", element: <ContactEntries /> },
+  { label: "Logout", icon: <FaSignOutAlt />, path: "/logout", element: <LogoutPage/> }, // Logout option
 ];
 
 export default function Header() {
