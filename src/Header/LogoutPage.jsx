@@ -8,7 +8,7 @@ const LogoutPage = () => {
     // Clear auth (e.g., token/localStorage/session)
     localStorage.removeItem('authToken');
     // Redirect to login
-    navigate('/login');
+    navigate('/');
   };
 
   return (
