@@ -101,169 +101,185 @@ const validate = () => {
   };
 
   return (
-    <div className="max-w-5xl mx-auto px-6 py-12 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-3xl shadow-2xl backdrop-blur-xl text-white animate-fade-in">
-      <h1 className="text-4xl md:text-5xl font-extrabold text-center text-pink-400 mb-10 tracking-wide drop-shadow-md">
-        Contact Us
-      </h1>
+  <div className="max-w-5xl mx-auto px-6 py-12 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-3xl shadow-2xl backdrop-blur-xl text-white animate-fade-in">
+    <h1 className="text-4xl md:text-5xl font-extrabold text-center text-pink-400 mb-10 tracking-wide drop-shadow-md">
+      Contact Us
+    </h1>
 
-      <form
-        onSubmit={handleSubmit}
-        className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 bg-gray-900/50 p-4 sm:p-6 md:p-10 rounded-3xl border border-pink-500/30 shadow-inner shadow-pink-500/10"
-      >
-        {/* Full Name */}
-        <div className="col-span-1 sm:col-span-2">
-          <label className="block mb-2 text-indigo-300 font-semibold text-sm sm:text-base">Full Name *</label>
+    <form
+      onSubmit={handleSubmit}
+      className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 bg-gray-900/50 p-4 sm:p-6 md:p-10 rounded-3xl border border-pink-500/30 shadow-inner shadow-pink-500/10"
+    >
+      {/* Full Name */}
+      <div className="col-span-1 sm:col-span-2">
+        <label className="block mb-2 text-indigo-300 font-semibold text-sm sm:text-base">
+          Full Name <span className="text-pink-400">*</span>
+        </label>
+        <input
+          type="text"
+          name="fullName"
+          value={formData.fullName}
+          onChange={handleChange}
+          required
+          className={`w-full px-4 py-3 sm:px-6 rounded-xl bg-gray-800 text-white border-2 ${errors.fullName ? "border-red-500" : "border-pink-500/20"} focus:ring-2 focus:ring-pink-500 outline-none text-sm sm:text-base`}
+          placeholder="Your full name"
+        />
+        {errors.fullName && <p className="text-red-400 text-xs mt-1">{errors.fullName}</p>}
+      </div>
+
+      {/* Phone Number */}
+      <div>
+        <label className="block mb-2 text-indigo-300 font-semibold text-sm sm:text-base">
+          Phone Number <span className="text-pink-400">*</span>
+        </label>
+        <input
+          type="tel"
+          name="phone"
+          value={formData.phone}
+          required
+          onChange={handleChange}
+          placeholder="+91xxxxxxxxxx"
+          className={`w-full px-4 py-3 sm:px-6 rounded-xl bg-gray-800 text-white border-2 ${errors.phone ? "border-red-500" : "border-pink-500/20"} focus:ring-2 focus:ring-pink-500 outline-none text-sm sm:text-base`}
+        />
+        {errors.phone && <p className="text-red-400 text-xs mt-1">{errors.phone}</p>}
+      </div>
+
+      {/* Alternate Number */}
+      <div>
+        <label className="block mb-2 text-indigo-300 font-semibold text-sm sm:text-base">
+          Alternate Number <span className="text-pink-400">*</span>
+        </label>
+        <input
+          type="tel"
+          name="alternatePhone"
+          value={formData.alternatePhone}
+          onChange={handleChange}
+          required
+          placeholder="+91xxxxxxxxxx"
+          className={`w-full px-4 py-3 sm:px-6 rounded-xl bg-gray-800 text-white border-2 ${errors.alternatePhone ? "border-red-500" : "border-pink-500/20"} focus:ring-2 focus:ring-pink-500 outline-none text-sm sm:text-base`}
+        />
+        {errors.alternatePhone && <p className="text-red-400 text-xs mt-1">{errors.alternatePhone}</p>}
+      </div>
+
+      {/* Date of Birth */}
+      <div>
+        <label className="block mb-2 text-indigo-300 font-semibold text-sm sm:text-base">
+          Date of Birth <span className="text-pink-400">*</span>
+        </label>
+        <div className="relative">
           <input
-            type="text"
-            name="fullName"
-            value={formData.fullName}
-            onChange={handleChange}
+            type="date"
+            name="dob"
+            id="dob"
+            value={formData.dob}
             required
-            className={`w-full px-4 py-3 sm:px-6 rounded-xl bg-gray-800 text-white border-2 ${errors.fullName ? "border-red-500" : "border-pink-500/20"} focus:ring-2 focus:ring-pink-500 outline-none text-sm sm:text-base`}
-            placeholder="Your full name"
+            onChange={handleChange}
+            className="w-full pr-12 px-4 py-3 sm:px-6 rounded-xl bg-gray-800 text-white border-2 border-pink-500/20 focus:ring-2 focus:ring-pink-500 outline-none appearance-none text-sm sm:text-base"
           />
-          {errors.fullName && <p className="text-red-400 text-xs mt-1">{errors.fullName}</p>}
-        </div>
-
-        {/* Phone Number */}
-        <div>
-          <label className="block mb-2 text-indigo-300 font-semibold text-sm sm:text-base">Phone Number *</label>
-          <input
-            type="tel"
-            name="phone"
-            value={formData.phone}
-            required
-            onChange={handleChange}
-            placeholder="+91xxxxxxxxxx"
-            className={`w-full px-4 py-3 sm:px-6 rounded-xl bg-gray-800 text-white border-2 ${errors.phone ? "border-red-500" : "border-pink-500/20"} focus:ring-2 focus:ring-pink-500 outline-none text-sm sm:text-base`}
-          />
-          {errors.phone && <p className="text-red-400 text-xs mt-1">{errors.phone}</p>}
-        </div>
-
-        {/* Alternate Number */}
-        <div>
-          <label className="block mb-2 text-indigo-300 font-semibold text-sm sm:text-base">Alternate Number (Optional)</label>
-          <input
-            type="tel"
-            name="alternatePhone"
-            value={formData.alternatePhone}
-            onChange={handleChange}
-            required
-            placeholder="+91xxxxxxxxxx"
-            className={`w-full px-4 py-3 sm:px-6 rounded-xl bg-gray-800 text-white border-2 ${errors.alternatePhone ? "border-red-500" : "border-pink-500/20"} focus:ring-2 focus:ring-pink-500 outline-none text-sm sm:text-base`}
-          />
-          {errors.alternatePhone && <p className="text-red-400 text-xs mt-1">{errors.alternatePhone}</p>}
-        </div>
-
-        {/* Date of Birth */}
-        <div>
-          <label className="block mb-2 text-indigo-300 font-semibold text-sm sm:text-base">Date of Birth</label>
-          <div className="relative">
-            <input
-              type="date"
-              name="dob"
-              id="dob"
-              value={formData.dob}
-              required
-              onChange={handleChange}
-              className="w-full pr-12 px-4 py-3 sm:px-6 rounded-xl bg-gray-800 text-white border-2 border-pink-500/20 focus:ring-2 focus:ring-pink-500 outline-none appearance-none text-sm sm:text-base"
-            />
-            <button
-              type="button"
-              onClick={() => document.getElementById("dob")?.showPicker?.()}
-              className="absolute inset-y-0 right-4 flex items-center text-pink-400 text-lg sm:text-xl"
-            >
-              📅
-            </button>
-            {errors.dob && <p className="text-red-400 text-xs mt-1">{errors.dob}</p>}
-          </div>
-        </div>
-
-        {/* Gender */}
-        <div>
-          <label className="block mb-2 text-indigo-300 font-semibold text-sm sm:text-base">Gender</label>
-          <select
-            name="gender"
-            value={formData.gender}
-            required
-            onChange={handleChange}
-            className="w-full px-4 py-3 sm:px-6 rounded-xl bg-gray-800 text-white border-2 border-pink-500/20 focus:ring-2 focus:ring-pink-500 outline-none text-sm sm:text-base"
-          >
-            <option value="">Select</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-            <option value="Prefer not to say">Prefer not to say</option>
-          </select>
-          {errors.gender && <p className="text-red-400 text-xs mt-1">{errors.gender}</p>}
-        </div>
-
-        {/* Subject */}
-        <div>
-          <label className="block mb-2 text-indigo-300 font-semibold text-sm sm:text-base">Subject *</label>
-          <input
-            type="text"
-            name="subject"
-            value={formData.subject}
-            required
-            onChange={handleChange}
-            placeholder="Email subject"
-            className={`w-full px-4 py-3 sm:px-6 rounded-xl bg-gray-800 text-white border-2 ${errors.subject ? "border-red-500" : "border-pink-500/20"} focus:ring-2 focus:ring-pink-500 outline-none text-sm sm:text-base`}
-          />
-          {errors.subject && <p className="text-red-400 text-xs mt-1">{errors.subject}</p>}
-        </div>
-
-        {/* Recipient Email */}
-        <div>
-          <label className="block mb-2 text-indigo-300 font-semibold text-sm sm:text-base">Recipient Email *</label>
-          <input
-            type="email"
-            name="recipientEmail"
-            value={formData.recipientEmail}
-            required
-            onChange={handleChange}
-            placeholder="recipient@example.com"
-            className={`w-full px-4 py-3 sm:px-6 rounded-xl bg-gray-800 text-white border-2 ${errors.recipientEmail ? "border-red-500" : "border-pink-500/20"} focus:ring-2 focus:ring-pink-500 outline-none text-sm sm:text-base`}
-          />
-          {errors.recipientEmail && <p className="text-red-400 text-xs mt-1">{errors.recipientEmail}</p>}
-        </div>
-
-        {/* Message */}
-        <div className="col-span-1 sm:col-span-2">
-          <label className="block mb-2 text-indigo-300 font-semibold text-sm sm:text-base">Message</label>
-          <textarea
-            name="message"
-            value={formData.message}
-            required
-            onChange={handleChange}
-            placeholder="Your message..."
-            rows="4"
-            className="w-full px-4 py-3 sm:px-6 rounded-xl bg-gray-800 text-white border-2 border-pink-500/20 focus:ring-2 focus:ring-pink-500 outline-none text-sm sm:text-base"
-          ></textarea>
-          {errors.message && <p className="text-red-400 text-xs mt-1">{errors.message}</p>}
-        </div>
-
-        {/* Submit Button */}
-        <div className="col-span-1 sm:col-span-2 text-center mt-2">
           <button
-            type="submit"
-            className="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-500 text-white text-base rounded-full shadow-lg hover:scale-105 transition-transform"
-            disabled={isSending} // Disable button while sending
+            type="button"
+            onClick={() => document.getElementById("dob")?.showPicker?.()}
+            className="absolute inset-y-0 right-4 flex items-center text-pink-400 text-lg sm:text-xl"
           >
-            {isSending ? "⏳ Sending Email..." : "✉️ Send Email"}
+            📅
           </button>
+          {errors.dob && <p className="text-red-400 text-xs mt-1">{errors.dob}</p>}
         </div>
+      </div>
 
-        {/* Submission Status */}
-        {submitStatus && (
-          <p className="col-span-1 sm:col-span-2 text-center mt-4 text-sm text-green-400 font-medium">
-            {submitStatus}
-          </p>
-        )}
-      </form>
+      {/* Gender */}
+      <div>
+        <label className="block mb-2 text-indigo-300 font-semibold text-sm sm:text-base">
+          Gender <span className="text-pink-400">*</span>
+        </label>
+        <select
+          name="gender"
+          value={formData.gender}
+          required
+          onChange={handleChange}
+          className="w-full px-4 py-3 sm:px-6 rounded-xl bg-gray-800 text-white border-2 border-pink-500/20 focus:ring-2 focus:ring-pink-500 outline-none text-sm sm:text-base"
+        >
+          <option value="">Select</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+          <option value="Prefer not to say">Prefer not to say</option>
+        </select>
+        {errors.gender && <p className="text-red-400 text-xs mt-1">{errors.gender}</p>}
+      </div>
 
-    </div>
-  );
+      {/* Subject */}
+      <div>
+        <label className="block mb-2 text-indigo-300 font-semibold text-sm sm:text-base">
+          Subject <span className="text-pink-400">*</span>
+        </label>
+        <input
+          type="text"
+          name="subject"
+          value={formData.subject}
+          required
+          onChange={handleChange}
+          placeholder="Email subject"
+          className={`w-full px-4 py-3 sm:px-6 rounded-xl bg-gray-800 text-white border-2 ${errors.subject ? "border-red-500" : "border-pink-500/20"} focus:ring-2 focus:ring-pink-500 outline-none text-sm sm:text-base`}
+        />
+        {errors.subject && <p className="text-red-400 text-xs mt-1">{errors.subject}</p>}
+      </div>
+
+      {/* Recipient Email */}
+      <div>
+        <label className="block mb-2 text-indigo-300 font-semibold text-sm sm:text-base">
+          Recipient Email <span className="text-pink-400">*</span>
+        </label>
+        <input
+          type="email"
+          name="recipientEmail"
+          value={formData.recipientEmail}
+          required
+          onChange={handleChange}
+          placeholder="recipient@example.com"
+          className={`w-full px-4 py-3 sm:px-6 rounded-xl bg-gray-800 text-white border-2 ${errors.recipientEmail ? "border-red-500" : "border-pink-500/20"} focus:ring-2 focus:ring-pink-500 outline-none text-sm sm:text-base`}
+        />
+        {errors.recipientEmail && <p className="text-red-400 text-xs mt-1">{errors.recipientEmail}</p>}
+      </div>
+
+      {/* Message */}
+      <div className="col-span-1 sm:col-span-2">
+        <label className="block mb-2 text-indigo-300 font-semibold text-sm sm:text-base">
+          Message <span className="text-pink-400">*</span>
+        </label>
+        <textarea
+          name="message"
+          value={formData.message}
+          required
+          onChange={handleChange}
+          placeholder="Your message..."
+          rows="4"
+          className="w-full px-4 py-3 sm:px-6 rounded-xl bg-gray-800 text-white border-2 border-pink-500/20 focus:ring-2 focus:ring-pink-500 outline-none text-sm sm:text-base"
+        ></textarea>
+        {errors.message && <p className="text-red-400 text-xs mt-1">{errors.message}</p>}
+      </div>
+
+      {/* Submit Button */}
+      <div className="col-span-1 sm:col-span-2 text-center mt-2">
+        <button
+          type="submit"
+          className="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-500 text-white text-base rounded-full shadow-lg hover:scale-105 transition-transform"
+          disabled={isSending}
+        >
+          {isSending ? "⏳ Sending Email..." : "✉️ Send Email"}
+        </button>
+      </div>
+
+      {/* Submission Status */}
+      {submitStatus && (
+        <p className="col-span-1 sm:col-span-2 text-center mt-4 text-sm text-green-400 font-medium">
+          {submitStatus}
+        </p>
+      )}
+    </form>
+  </div>
+);
+
 };
 
 export default ContactPage;
