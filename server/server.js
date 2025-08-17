@@ -19,7 +19,7 @@ const allowedOrigins = [
 ];
 
 // 🌐 MongoDB Connection
-mongoose.connect(process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/portfolio", {
+mongoose.connect("mongodb+srv://harsh_patel_0:82esEaQRHbT7@N8@cluster0.2egugdo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0 ", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
