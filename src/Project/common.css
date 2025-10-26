@@ -64,3 +64,68 @@
   box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
 }
 
+/* New  */
+/* ===== Outer Border Glow Effect ===== */
+
+.project-card {
+  position: relative;
+  border-radius: 1rem;
+  overflow: visible; /* allows glow to show outside */
+  transition: all 0.4s ease;
+  z-index: 1;
+}
+
+/* The glowing aura outside the box */
+.project-card::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at var(--x, 50%) var(--y, 50%),
+    rgba(114, 172, 189, 0.8)5%,   /* purple glow center */
+    rgba(236, 72, 153, 0.3) 1%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1; /* behind the card */
+  filter: blur(40px); /* soft outer glow */
+  pointer-events: none;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+/* Ensure content stays on top */
+.project-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+.glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.glow::before {
+  content: "";
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  transform: translate(-50%, -50%);
+  width: 150px;   /* 🔽 Smaller glow size */
+  height: 150px;  /* 🔽 Smaller glow size */
+  background: radial-gradient(
+    circle closest-side,
+   rgba(168, 85, 247, 0.15),
+    transparent 50%
+  );
+  pointer-events: none;
+  border-radius: 50%;
+  transition: width 0.2s ease, height 0.2s ease;
+}
