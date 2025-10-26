@@ -37,8 +37,9 @@ export default function MiniProject() {
 
   return (
     <div className="flex flex-col items-center justify-center space-y-6">
-      <span className="text-3xl font-bold text-white drop-shadow-md">Mini Projects</span>
-
+      <h1 className="text-3xl sm:text-4xl font-extrabold text-center bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-500 bg-clip-text text-transparent drop-shadow-lg animate-pulse">
+        Mini Projects
+        </h1>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 w-full px-4">
         {projects.map((project) => (
           <div

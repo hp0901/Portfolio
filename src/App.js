@@ -73,14 +73,14 @@ useEffect(() => {
           {/* Home Page */}
           <Route path="/" element={
             <>
-              <section className="z-10 shadow-2xl rounded-3xl bg-white/5 dark:bg-black/10 backdrop-blur p-6 hover:scale-[1.02] transition">
-                <MiniProject />
+            <section className="z-10 shadow-2xl rounded-3xl bg-white/5 dark:bg-black/10 backdrop-blur p-6 hover:scale-[1.02] transition">
+                <LargeProject />
               </section>
-              <section className="z-10 shadow-2xl rounded-3xl bg-white/5 dark:bg-black/10 backdrop-blur p-6 hover:scale-[1.02] transition">
+            <section className="z-10 shadow-2xl rounded-3xl bg-white/5 dark:bg-black/10 backdrop-blur p-6 hover:scale-[1.02] transition">
                 <MidiumProject />
               </section>
               <section className="z-10 shadow-2xl rounded-3xl bg-white/5 dark:bg-black/10 backdrop-blur p-6 hover:scale-[1.02] transition">
-                <LargeProject />
+                <MiniProject />
               </section>
             </>
           } />
