@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './common.css'; // Assuming you have a common.css for shared styles
 import testomonials from '../photos/testimonials.png';
 import reactToast from '../photos/toast.png';
-
+import weather from '../assets/weather.png'
 export default function MiniProject() {
   const [expandedProjectId, setExpandedProjectId] = useState(null);
 
@@ -21,6 +21,13 @@ export default function MiniProject() {
       description: "A clean and responsive component dedicated to displaying customer testimonials. This project highlights my ability to structure dynamic content, often featuring a carousel or slider, to effectively build trust and social proof by showcasing positive user feedback in an engaging way.",
       url: "https://testomenials.netlify.app/"
     },
+    {
+      id: 3,
+      name: "Weather App",
+      imageUrl: weather,
+      description: "A modern, responsive weather forecasting web app that provides real-time weather updates for any location. Built with clean UI and API integration, this project demonstrates my skills in working with APIs, handling asynchronous data, and building user-friendly interfaces with accurate and dynamic information display.",
+      url: "https://weather-app-0901.netlify.app/"
+      }
   ];
 
   const getShortDescription = (text, wordLimit) => {

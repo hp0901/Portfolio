@@ -82,7 +82,7 @@ export default function LargeProject() {
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 inline-block text-center py-2 px-4 rounded-lg font-semibold text-white bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-400 hover:to-purple-500 transition-all duration-300 shadow-md z-10"
+              className="shimmering-border-link"
             >
               View Project
             </a>
